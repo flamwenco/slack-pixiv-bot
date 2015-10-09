@@ -4,7 +4,7 @@ module SlackMathbot
       match(/^(?<bot>\w*)$/)
 
       def self.call(client, data, _match)
-        send_message_with_gif client, data.channel, SlackMathbot::ABOUT, 'math'
+        send_message client, data.channel, SlackMathbot::ABOUT
       end
     end
   end
