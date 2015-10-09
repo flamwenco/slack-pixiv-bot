@@ -1,8 +1,0 @@
-require 'rubygems'
-require 'bundler/setup'
-require 'logger'
-require 'active_support'
-require 'active_support/core_ext'
-require 'hashie'
-require 'slack'
-require 'giphy'
