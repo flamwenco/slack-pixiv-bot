@@ -5,7 +5,6 @@ module SlackMathbot
       command 'calculate'
 
       def self.call(client, data, match)
-          send_message client, data.channel, match
         result = Dentaku::Calculator.new.evaluate(match[:expression]) if match.names.include?('expression')
         result = result.to_s if result
         if result && result.length > 0
