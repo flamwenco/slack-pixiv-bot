@@ -10,10 +10,10 @@ module SlackMathbot
         if result && result.length > 0
           send_message client, data.channel, result
         else
-          send_message client, data.channel, 'Got nothing.'
+          send_message client, data.channel, 'Got nothing.', 'nothing'
         end
       rescue StandardError => e
-        send_message client, data.channel, "Sorry, #{e.message}."
+        send_message client, data.channel, "Sorry, #{e.message}.", 'idiot'
       end
     end
   end
