@@ -1,4 +1,3 @@
-require Math
 require 'slack-ruby-bot'
 require 'slack-mathbot/version'
 require 'slack-mathbot/about'
