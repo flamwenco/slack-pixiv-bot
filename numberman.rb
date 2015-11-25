@@ -5,12 +5,6 @@ module NumberManBot
   class App < SlackRubyBot::App
   end
 
-  class Ping < SlackRubyBot::Commands::Base
-    def self.call(client, data, _match)
-      client.message text: 'pong', channel: data.channel
-    end
-  end
-
   class Weather < SlackRubyBot::Commands::Base
     match(/^How is the weather in (?<location>\w*)\?$/i) do |client, data, match|
       send_message client, data.channel, "The weather in #{match[:location]} is nice."
@@ -18,9 +12,37 @@ module NumberManBot
   end
 
   class Calculator < SlackRubyBot::Commands::Base
-  operator '=' do |_data, _match|
+  operator '=' do |client, _data, _match|
     # implementation detail
-    send_message client, data.channel, "The weather in the net is nice."
+	Wolfram.appid = "R3KHQ2-2T2769PP4P"
+
+	eq = _match[1..-1]
+	result = Wolfram.fetch(eq[1])
+	# to see the result as a hash of pods and assumptions:
+	hash = Wolfram::HashPresenter.new(result).to_hash
+	puts hash
+
+	pods = hash[:pods]
+	result = pods["Result"]
+	#solution = pods["Real solutions"]
+	puts result
+
+	if result != nil
+		result[0].sub! "~~", "≈"
+    	send_message client, _data.channel, result[0]
+	else
+		solution = pods["Real solution"]
+		puts solution
+		if solution != nil
+			solution[0].sub! "~~", "≈"
+    		send_message client, _data.channel, solution[0]
+		else
+			solution = pods["Real solutions"]
+			solution[0].sub! "~~", "≈"
+			puts solution
+    		send_message client, _data.channel, solution[0]
+		end
+	end
   end
   end
 end
