@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+ruby '2.2.0'
+
 gem 'slack-ruby-bot'
 gem 'wolfram'
 gem 'puma'
