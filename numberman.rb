@@ -1,9 +1,10 @@
-module SlackMathbot
-  module Commands
-    class Calculate < SlackRubyBot::Commands::Base
+require 'slack-ruby-bot'
+require 'wolfram'
+
+module NumberManBot
+  class App < SlackRubyBot::App
       operator '='
       command 'calculate'
-
       def self.call(client, data, match)
         puts match[:expression]
         result = Dentaku::Calculator.new.evaluate(match[:expression])
@@ -17,6 +18,13 @@ module SlackMathbot
       rescue StandardError => e
         send_message client, data.channel, "Sorry, #{e.message}."
       end
+  end
+
+  class Ping < SlackRubyBot::Commands::Base
+    def self.call(client, data, _match)
+      client.message text: 'pong', channel: data.channel
     end
   end
 end
+
+NumberManBot::App.instance.run
