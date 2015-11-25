@@ -1,1 +1,1 @@
-console: bundle exec ruby numberman.rb
+web: bundle exec puma -p $PORT

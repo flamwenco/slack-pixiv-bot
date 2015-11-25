@@ -8,6 +8,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
+    diff-lcs (1.2.5)
     eventmachine (1.0.7)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -20,6 +21,8 @@ GEM
     faye-websocket (0.10.0)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
+    foreman (0.78.0)
+      thor (~> 0.19.1)
     giphy (2.0.2)
       faraday (~> 0.9)
       faraday_middleware (~> 0.9)
@@ -36,6 +39,30 @@ GEM
     nokogiri (1.6.6.4)
       mini_portile (~> 0.6.0)
     oj (2.12.10)
+    puma (2.12.2)
+    rack (1.6.4)
+    rack-protection (1.5.3)
+      rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    rake (10.4.2)
+    rspec (3.3.0)
+      rspec-core (~> 3.3.0)
+      rspec-expectations (~> 3.3.0)
+      rspec-mocks (~> 3.3.0)
+    rspec-core (3.3.2)
+      rspec-support (~> 3.3.0)
+    rspec-expectations (3.3.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-mocks (3.3.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-support (3.3.0)
+    sinatra (1.4.6)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (>= 1.3, < 3)
     slack-ruby-bot (0.4.0)
       activesupport
       giphy (~> 2.0.2)
@@ -47,7 +74,9 @@ GEM
       faraday
       faraday_middleware
       faye-websocket
+    thor (0.19.1)
     thread_safe (0.3.5)
+    tilt (2.0.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     websocket-driver (0.5.4)
@@ -60,6 +89,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  foreman
+  puma
+  rack-test
+  rake
+  rspec
+  sinatra
   slack-ruby-bot
   wolfram
 
