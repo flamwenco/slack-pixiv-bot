@@ -3,27 +3,25 @@ require 'wolfram'
 
 module NumberManBot
   class App < SlackRubyBot::App
-      operator '='
-      command 'calculate'
-      def self.call(client, data, match)
-        puts match[:expression]
-        result = Dentaku::Calculator.new.evaluate(match[:expression])
-		#if match.names.include?('expression')
-        result = result.to_s if result
-        if result && result.length > 0
-          send_message client, data.channel, result
-        else
-          send_message client, data.channel, 'Got nothing.'
-        end
-      rescue StandardError => e
-        send_message client, data.channel, "Sorry, #{e.message}."
-      end
   end
 
   class Ping < SlackRubyBot::Commands::Base
     def self.call(client, data, _match)
       client.message text: 'pong', channel: data.channel
     end
+  end
+
+  class Weather < SlackRubyBot::Commands::Base
+    match(/^How is the weather in (?<location>\w*)\?$/i) do |client, data, match|
+      send_message client, data.channel, "The weather in #{match[:location]} is nice."
+    end
+  end
+
+  class Calculator < SlackRubyBot::Commands::Base
+  operator '=' do |_data, _match|
+    # implementation detail
+    send_message client, data.channel, "The weather in the net is nice."
+  end
   end
 end
 
