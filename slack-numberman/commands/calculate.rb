@@ -42,10 +42,20 @@ module SlackMathbot
           else
 			# Check the other possible name for real solutions
             solution = pods["Real solutions"]
-		    # Prettify equivalency
-            solution[0].sub! "~~", "≈"
-            puts solution
-            send_message client, _data.channel, solution[0]
+
+			if solution != nil
+		      # Prettify equivalency
+              solution[0].sub! "~~", "≈"
+              puts solution
+              send_message client, _data.channel, solution[0]
+			else
+			  decimal = pods["Decimal approximation"]
+
+			  if decimal != nil
+			    puts decimal
+			    send_message client, _data.channel, decimal[0]
+			  end
+			end
           end
         end
       end
