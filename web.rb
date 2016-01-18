@@ -1,6 +1,6 @@
 require 'sinatra/base'
 
-module SlackNumberman
+module SlackPixiv
   class Web < Sinatra::Base
     get '/' do
       'Math is good for you.'
