@@ -29,7 +29,7 @@ module SlackMathbot
           attachments: [
             {
               fallback: title + " - " + pixiv_url,
-              text: "<" + ios_url + "/|iOSTest"
+              text: "<" + ios_url + "/|iOSTest",
               title: title,
               title_link: pixiv_url,
               image_url: image_url,
