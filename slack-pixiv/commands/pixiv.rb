@@ -12,7 +12,7 @@ module SlackMathbot
         puts pixiv_url
 
         # Create iOS URL
-        ios_url = "pixiv://illusts" + pixiv_url.split('=')[-1]
+        ios_url = "pixiv://illusts/" + pixiv_url.split('=')[-1]
         puts ios_url
 
         # Scrape page title
@@ -29,7 +29,7 @@ module SlackMathbot
           attachments: [
             {
               fallback: title + " - " + pixiv_url,
-              text: "<" + ios_url + "/|iOSTest",
+              text: "<" + ios_url + "|iOSTest",
               title: title,
               title_link: pixiv_url,
               image_url: image_url,
