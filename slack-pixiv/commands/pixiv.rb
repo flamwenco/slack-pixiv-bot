@@ -5,7 +5,8 @@ module SlackMathbot
       match /pixiv\.net(?<url>.*)$/ do |client, _data, _match|
 
         #asdf
-        client.say(channel: _data.channel, text: "Testing: #{_match[:url]}")
+        #client.say(channel: _data.channel, text: "Testing: #{_match[:url]}")
+        send_message client, _data.channel, "Testing: #{_match[:url]}"
 
       end
     end
