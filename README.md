@@ -5,6 +5,8 @@ This is a Slack bot based on [slack-ruby-bot](https://github.com/dblock/slack-ru
 
 When a [Pixiv](http://www.pixiv.net/) link is posted in the channel the Pixiv bot is in, it will "unfurl" the image via message attachements. Pixiv does not allow the images on the site to reside in the metadata, so standard Slack unfurling is unable to preview the image.
 
+![Screenshot](https://github.com/dmuckerman/slack-pixiv-bot/assets/example.png)
+
 If you run iOS, the bot will also post an `Open in App` link to view the image in the native Pixiv app. No more mobile web view!
 
 ## License
