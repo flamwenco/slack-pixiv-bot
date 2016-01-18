@@ -4,23 +4,34 @@ module SlackMathbot
     class Pixiv < SlackRubyBot::Commands::Base
       match /pixiv\.net(?<url>.*)$/ do |client, _data, _match|
 
-        #asdf
-        puts _match[:url]
-        #client.say(channel: _data.channel, text: "Testing: http://pixiv.net#{_match[:url]}")
+        # Initalize Mechanize
+        agent = Mechanize.new
+
+        # Create Pixiv URL
+        pixiv_url = "http://www.pixiv.net" + _match[:url][0..-2]
+        puts pixiv_url
+
+        # Scrape page title
+        title = Mechanize.new.get(pixiv_url).title
+        puts title
+
+        # Scrape image
+        image_url = agent.get(pixiv_url).images_with(:src => /600x600\/img-master/)[0].to_s.sub! '600x600','480x960'
+        puts image_url
+
         client.web_client.chat_postMessage(
           channel: _data.channel,
           as_user: true,
           attachments: [
             {
-              fallback: "Ticket #1943: Can't rest my password - https://groove.hq/path/to/ticket/1943",
-              title: "Ticket #1943: Can't reset my password",
-              title_link: "http://www.pixiv.net" + _match[:url][1..-1],
-              text: "Help! I tried to reset my password but nothing happened!",
-              color: "#7CD197"
+              fallback: title + " - " + pixiv_url,
+              title: title,
+              title_link: pixiv_url,
+              image_url: image_url,
+              color: "#2684BD"
             }
           ].to_json
         )
-        #send_message client, _data.channel, "Testing: #{_match[:url]}"
 
       end
     end
