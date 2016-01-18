@@ -1,4 +1,4 @@
-module SlackNumberman
+module SlackPixiv
   class App < SlackRubyBot::App
   end
 end

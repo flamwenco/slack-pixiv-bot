@@ -1,11 +1,11 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
-require 'slack-numberman'
+require 'slack-pixiv'
 require 'web'
 
 Thread.new do
   begin
-    SlackNumberman::App.instance.run
+    SlackPixiv::App.instance.run
   rescue Exception => e
     STDERR.puts "ERROR: #{e}"
     STDERR.puts e.backtrace
@@ -13,4 +13,4 @@ Thread.new do
   end
 end
 
-run SlackNumberman::Web
+run SlackPixiv::Web
