@@ -11,9 +11,13 @@ module SlackMathbot
         pixiv_url = "http://www.pixiv.net" + _match[:url][0..-2]
         puts pixiv_url
 
-        # Create iOS URL
+        # Create iOS Illustration URL
         ios_url = "pixiv://illusts/" + pixiv_url.split('=')[-1]
         puts ios_url
+
+	# Create iOS Member URL
+	ios_mem_url = "pixiv://member/" + pixiv_url.split('=')[0..-1]
+	puts ios_mem_url
 
         # Scrape page title
         title = Mechanize.new.get(pixiv_url).title
@@ -29,7 +33,7 @@ module SlackMathbot
           attachments: [
             {
               fallback: title + " - " + pixiv_url,
-              text: "<" + ios_url + "|Open in App>",
+              text: "<" + ios_url + "|Open Illustration in App > <" + ios_mem_url + "|Open Member in App>",
               title: title,
               title_link: pixiv_url,
               image_url: image_url,
