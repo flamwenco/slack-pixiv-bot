@@ -16,7 +16,7 @@ module SlackMathbot
         puts ios_url
 
 	# Create iOS Member URL
-	ios_mem_url = "pixiv://member/" + pixiv_url.split('=')[0..-1]
+	ios_mem_url = "pixiv://member/" + pixiv_url.split('=')[-2]
 	puts ios_mem_url
 
         # Scrape page title
