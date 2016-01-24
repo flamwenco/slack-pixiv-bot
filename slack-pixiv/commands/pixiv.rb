@@ -33,7 +33,7 @@ module SlackMathbot
           attachments: [
             {
               fallback: title + " - " + pixiv_url,
-              text: "<" + ios_url + "|Open in App>"
+              text: "<" + ios_url + "|Open in App>" + 
 			"<" + ios_mem_url + "|Open Member in App>",
               title: title,
               title_link: pixiv_url,
