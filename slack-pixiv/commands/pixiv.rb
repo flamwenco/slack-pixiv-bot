@@ -11,10 +11,9 @@ module SlackMathbot
         pixiv_url = "http://www.pixiv.net" + _match[:url][0..-2]
         puts pixiv_url
 
-        # Create iOS Illustration URL
-        splitter = "pixiv://illusts/" + pixiv_url.split("illust_id=")[-1]
-	puts splitter.to_s
-	ios_url = splitter.slice(/(^[0-9]+$)/)
+        # Create iOS Illustration URL, regex pixiv_url to
+	# extract numbers only, such as /^[0-9]+$/
+        ios_url = "pixiv://illusts/" + pixiv_url.split("illust_id=")[-1]
        	puts ios_url
 
 
