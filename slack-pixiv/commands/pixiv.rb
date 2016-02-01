@@ -12,8 +12,9 @@ module SlackMathbot
         puts pixiv_url
 
         # Create iOS Illustration URL
-        # ios_url = "pixiv://illusts/" + pixiv_url.split("illust_id=")[-1]
-	ios_url = "pixiv://illusts/" + pixiv_url.slice(/(^[0-9]+$)/)
+        splitter = "pixiv://illusts/" + pixiv_url.split("illust_id=")[-1]
+	puts splitter
+	ios_url = splitter.slice(/(^[0-9]+$)/)
        	puts ios_url
 
 
