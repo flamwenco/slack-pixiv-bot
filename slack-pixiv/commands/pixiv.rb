@@ -13,8 +13,9 @@ module SlackMathbot
 
         # Create iOS Illustration URL, regex pixiv_url to
 	# extract numbers only, such as /^[0-9]+$/
-        ios_url = "pixiv://illusts/" + pixiv_url.split("illust_id=")[-1]
-       	puts ios_url
+        #ios_url = "pixiv://illusts/" + pixiv_url.split("illust_id=")[-1]
+       	ios_url = "pixiv://illusts/" + pixiv_url[/\d+/]
+	puts ios_url
 
 
 	# TODO: Create iOS Member URL, must find correct URL scheme
