@@ -1,6 +1,7 @@
 require 'slack-ruby-bot'
 require 'wolfram'
 require 'mechanize'
+require 'xmlsimple'
 require 'nokogiri'
 require 'slack-pixiv/commands/pixiv'
 require 'slack-pixiv/app'

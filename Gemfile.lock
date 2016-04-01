@@ -107,6 +107,7 @@ GEM
     websocket-extensions (0.1.2)
     wolfram (0.2.1)
       nokogiri (>= 1.4.3)
+    xml-simple (1.1.5)
 
 PLATFORMS
   ruby
@@ -122,6 +123,7 @@ DEPENDENCIES
   sinatra
   slack-ruby-bot (~> 0.6.0)
   wolfram
+  xml-simple
 
 BUNDLED WITH
    1.11.2
