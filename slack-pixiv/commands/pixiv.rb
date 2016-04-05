@@ -2,13 +2,19 @@
 module SlackMathbot
   module Commands
     class Pixiv < SlackRubyBot::Commands::Base
-      match /pixiv\.net(?<url>.*)$/ do |client, _data, _match|
+      match /member_illust\.php(?<url>.*)$/ do |client, _data, _match|
 
         # Initalize Mechanize
         agent = Mechanize.new
 
         # Create Pixiv URL
-        pixiv_url = "http://www.pixiv.net" + _match[:url][0..-2]
+        # If a full URL is given, extra characters are appended for some reason.
+        # This ensures we catch them better
+        if (_data[:text].include? "pixiv.net")
+          pixiv_url = "http://www.pixiv.net/member_illust.php" + _match[:url][0..-2]
+        else
+          pixiv_url = "http://www.pixiv.net/member_illust.php" + _match[:url][0..-1]
+        end
         puts pixiv_url
 
         # Create iOS Illustration URL, regex pixiv_url to
