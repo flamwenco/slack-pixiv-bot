@@ -7,7 +7,6 @@ gem 'wolfram'
 gem 'puma'
 gem 'sinatra'
 gem 'mechanize'
-gem 'xml-simple'
 gem 'nokogiri'
 
 group :development, :test do
