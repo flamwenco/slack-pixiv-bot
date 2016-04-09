@@ -1,7 +1,7 @@
 # coding: utf-8
 module SlackMathbot
   module Commands
-    class Pixiv < SlackRubyBot::Commands::Base
+    class Illust < SlackRubyBot::Commands::Base
       match /member_illust\.php(?<url>.*)$/ do |client, _data, _match|
 
         # Initalize Mechanize
@@ -22,11 +22,6 @@ module SlackMathbot
         #ios_url = "pixiv://illusts/" + pixiv_url.split("illust_id=")[-1]
        	ios_url = "pixiv://illusts/" + pixiv_url[/\d+/]
 	puts ios_url
-
-
-	# TODO: Create iOS Member URL, must find correct URL scheme
-	ios_mem_url = "pixiv://member/" + pixiv_url.split("?id=")[-1]
-	puts ios_mem_url
 
         # Scrape page title
         title = Mechanize.new.get(pixiv_url).title
