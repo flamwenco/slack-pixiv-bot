@@ -23,8 +23,16 @@ module SlackMathbot
        	ios_url = "pixiv://illusts/" + pixiv_url[/\d+/]
 	puts ios_url
 
+        # Scrape profile link
+        profile = agent.get(pixiv_url).at("div.userdata > h2.name > a").attributes['href'].to_s
+        puts profile
+
+        # Create iOS Members URL
+        ios_mem_url = "pixiv://users/" + profile[/\d+/]
+        puts ios_mem_url
+
         # Scrape page title
-        title = Mechanize.new.get(pixiv_url).title
+        title = agent.get(pixiv_url).title
         puts title
 
         # Scrape image
@@ -37,7 +45,7 @@ module SlackMathbot
           attachments: [
             {
               fallback: title + " - " + pixiv_url,
-              text: "<" + ios_url + "|Open in App>",
+              text: "<" + ios_url + "|Open Image in App> | <" + ios_mem_url + "|Open Profile in App>",
               title: title,
               title_link: pixiv_url,
               image_url: image_url,

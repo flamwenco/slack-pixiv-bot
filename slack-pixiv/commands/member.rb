@@ -8,22 +8,21 @@ module SlackMathbot
         agent = Mechanize.new
 
         pixiv_url = "http://www.pixiv.net/member.php" + _match[:url][0..-2]
-        puts pixiv_url.split("?id=")[-1]
+
 
         # Scrape page title
-        title = Mechanize.new.get(pixiv_url).title
+        title = agent.get(pixiv_url).title
         puts title
 
         # Scrape username
-        username = Mechanize.new.get(pixiv_url).at(".name").text
+        username = agent.get(pixiv_url).at(".name").text
         puts username
 
         # Scrape profile comment
-        profile_comment = Mechanize.new.get(pixiv_url).at(".profile-comment").text.split("br { display : none;}")[-1]
+        profile_comment = agent.get(pixiv_url).at(".profile-comment").text.split("br { display : none;}")[-1]
         puts profile_comment
 
         # Scrape works count
-        #works = Mechanize.new.get(pixiv_url).at(".count")
         works = agent.get(pixiv_url).links_with(:class => /int/)
         puts works
 
