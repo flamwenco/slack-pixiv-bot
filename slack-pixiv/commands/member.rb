@@ -36,9 +36,8 @@ module SlackMathbot
           attachments: [
             {
               fallback: title + " - " + pixiv_url,
-              text: "<" + ios_mem_url + "|Open in App>",
-              text: profile_comment,
-              title: username,
+              text: "<" + ios_mem_url + "|Open Profile in App>\n" + profile_comment,
+              title: "「" + username + "」",
               title_link: pixiv_url,
               color: "#2684BD",
               fields: [
