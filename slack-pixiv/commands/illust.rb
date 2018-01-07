@@ -24,7 +24,7 @@ module SlackMathbot
 	puts ios_url
 
         # Scrape profile link
-        profile = agent.get(pixiv_url).at("div.userdata > h2.name > a").attributes['href'].to_s
+        profile = agent.get(pixiv_url).at("div.userdata-row > h2.name > a").attributes['href'].to_s
         puts profile
 
         # Create iOS Members URL
