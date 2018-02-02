@@ -8,7 +8,8 @@ module SlackMathbot
         agent = Mechanize.new
 
         pixiv_url = "http://www.pixiv.net/member.php" + _match[:url][0..-2]
-
+        pixiv_url = CGI.unescapeHTML(pixiv_url)
+        puts pixiv_url
 
         # Scrape page title
         title = agent.get(pixiv_url).title

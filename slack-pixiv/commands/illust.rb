@@ -15,7 +15,7 @@ module SlackMathbot
         else
           pixiv_url = "http://www.pixiv.net/member_illust.php" + _match[:url][0..-1]
         end
-        pixiv_url = URI.unescape(pixiv_url)
+        pixiv_url = CGI.unescapeHTML(pixiv_url)
         puts pixiv_url
 
         # Create iOS Illustration URL, regex pixiv_url to
