@@ -5,9 +5,9 @@ ruby '2.4.2'
 gem 'slack-ruby-bot', '~> 0.10.5'
 gem 'wolfram'
 gem 'puma'
-gem 'sinatra'
+gem 'sinatra', '~> 2.0.2'
 gem 'mechanize'
-gem 'nokogiri'
+gem 'nokogiri', '~> 1.8.2'
 gem 'celluloid-io'
 
 group :development, :test do
