@@ -40,7 +40,7 @@ module SlackMathbot
         image_url = agent.get(pixiv_url).images_with(:src => /600x600\/img-master/)[0].to_s.sub! '600x600','480x960'
         begin
           # Attempt to check on image
-          page = agent.head(image_url)
+          page = agent.get(image_url)
 
           # Make sure page came back kosher
           if page.code.to_i == 200
