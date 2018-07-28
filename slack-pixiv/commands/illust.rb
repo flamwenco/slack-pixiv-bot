@@ -37,24 +37,7 @@ module SlackMathbot
         puts title
 
         # Scrape image
-        image_url = agent.get(pixiv_url).images_with(:src => /600x600\/img-master/)[0].to_s.sub! '600x600','480x960'
-        begin
-          # Attempt to check on image
-          page = agent.get(image_url)
-
-          # Make sure page came back kosher
-          if page.code.to_i == 200
-            # Image url is fine
-            puts "Image is good to go!"
-          else
-            # Fallback on http error to be safe
-            image_url = "https://embed.pixiv.net/decorate.php?illust_id=" + pixiv_url[/\d+/]
-          end
-        rescue Mechanize::ResponseCodeError
-          # Fallback to og:image url
-          puts "Image failed to load"
-          image_url = "https://embed.pixiv.net/decorate.php?illust_id=" + pixiv_url[/\d+/]
-        end
+        image_url = "https://embed.pixiv.net/decorate.php?illust_id=" + pixiv_url[/\d+/]
         puts image_url
 
         client.web_client.chat_postMessage(
